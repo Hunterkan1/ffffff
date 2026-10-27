@@ -16,7 +16,7 @@ local LocalPlayer = Players.LocalPlayer
 local ParentGui = (pcall(function() return gethui() end) and gethui()) or CoreGui
 
 --------------------------------------------------------------------------------
--- UNIVERSAL DRAGGABLE HELPER[cite: 1]
+-- UNIVERSAL DRAGGABLE HELPER
 --------------------------------------------------------------------------------
 local function makeDraggable(guiFrame, dragHandle)
     dragHandle = dragHandle or guiFrame
@@ -48,10 +48,10 @@ local function makeDraggable(guiFrame, dragHandle)
 end
 
 --------------------------------------------------------------------------------
--- KEYS & AUTHENTICATION SCREEN[cite: 1]
+-- KEYS & AUTHENTICATION SCREEN
 --------------------------------------------------------------------------------
-local ALLOWED_USER_ID = 7599469284
-local ALLOWED_USERNAME = "gust6114"
+local ALLOWED_USER_ID = 9603761866
+local ALLOWED_USERNAME = "Hack_aas1"
 
 local VALID_KEYS_LOOKUP = {
     ["APPLE-KEY-StaffNEW"] = true,
@@ -66,17 +66,7 @@ local VALID_KEYS_LOOKUP = {
     ["APPLE-KEY-PQRsA6"] = true,
 }
 
-local isBannedUser = (LocalPlayer.UserId == BANNED_USER_ID) or (LocalPlayer.Name:lower() == BANNED_USERNAME:lower())
 local isWhitelistedUser = (LocalPlayer.UserId == ALLOWED_USER_ID) or (LocalPlayer.Name:lower() == ALLOWED_USERNAME:lower())
-
-if isBannedUser then
-    pcall(function()
-        local args = {"Points", 100000, "Kills", 1, "Reward", 15}
-        local giveStats = LocalPlayer:FindFirstChild("GiveStats", true) or ReplicatedStorage:FindFirstChild("GiveStats", true) or game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui", 2):WaitForChild("RewardUI", 2):WaitForChild("GiveStats", 2)
-        if giveStats then giveStats:FireServer(unpack(args)) end
-    end)
-    return
-end
 
 local LoadScreenGui = Instance.new("ScreenGui", ParentGui)
 LoadScreenGui.Name = "GreenAppleHubLoading"
@@ -177,7 +167,7 @@ else
 end
 
 --------------------------------------------------------------------------------
--- MAIN HUB CLEANUP & SETUP[cite: 1]
+-- MAIN HUB CLEANUP & SETUP
 --------------------------------------------------------------------------------
 if getgenv().GreenAppleHubCleanup then pcall(getgenv().GreenAppleHubCleanup) end
 
@@ -245,7 +235,7 @@ local function findTheRakeModel()
 end
 
 --------------------------------------------------------------------------------
--- MAIN GUI CREATION[cite: 1]
+-- MAIN GUI CREATION
 --------------------------------------------------------------------------------
 local ScreenGui = Instance.new("ScreenGui", ParentGui)
 ScreenGui.Name = "349857348975jnegkfdng"
@@ -404,7 +394,7 @@ local function CreatePageBtn(parentPage, text, order)
 end
 
 --------------------------------------------------------------------------------
--- COMPACT HEALTH GUI[cite: 1]
+-- COMPACT HEALTH GUI
 --------------------------------------------------------------------------------
 local HealthGui = Instance.new("ScreenGui", ParentGui)
 HealthGui.Name = "GreenAppleHubPlayerHPGui"
@@ -426,7 +416,7 @@ Connections.HPTracker = RunService.Heartbeat:Connect(function()
 end)
 
 --------------------------------------------------------------------------------
--- 1. INFO TAB CONTENT[cite: 1]
+-- 1. INFO TAB CONTENT
 --------------------------------------------------------------------------------
 local InfoCard = Instance.new("Frame", InfoPage)
 InfoCard.Size = UDim2.new(1, 0, 0, 120)
@@ -460,7 +450,7 @@ CopyDiscordBtn.Activated:Connect(function()
 end)
 
 --------------------------------------------------------------------------------
--- 2. MAIN TAB CONTENT[cite: 1, 5]
+-- 2. MAIN TAB CONTENT
 --------------------------------------------------------------------------------
 local ModeFrame = Instance.new("Frame", MainPage)
 ModeFrame.Size = UDim2.new(1, 0, 0, 75)
@@ -670,7 +660,6 @@ Tasks.InfReachTask = task.spawn(function()
                             firetouchinterest(rakePart, handle, 0)
                             firetouchinterest(rakePart, handle, 1)
                         end
-                        -- Removed tool:Activate() so it doesn't auto-click!
                     end
                 end
             end)
@@ -701,7 +690,7 @@ Tasks.ShieldTask = task.spawn(function()
 end)
 
 --------------------------------------------------------------------------------
--- 3. AUTO TAB CONTENT[cite: 1, 5]
+-- 3. AUTO TAB CONTENT
 --------------------------------------------------------------------------------
 local AutoPickupBtn, AutoPickupS, AutoPickupG = CreatePageBtn(AutoPage, "🌀 Auto Pick-Up (Drops): OFF", 1)
 local CandyTpBtn, CandyS, CandyG = CreatePageBtn(AutoPage, "🌀 Bring Candy To Me: OFF", 2)
@@ -843,7 +832,7 @@ safeBindClick(RecoverBtn, function()
 end)
 
 --------------------------------------------------------------------------------
--- 4. LUCK TAB CONTENT[cite: 1]
+-- 4. LUCK TAB CONTENT
 --------------------------------------------------------------------------------
 local Luck250Btn, Luck250S, Luck250G = CreatePageBtn(LuckPage, "🍀 Luck 250x: OFF", 1)
 local Luck500Btn, Luck500S, Luck500G = CreatePageBtn(LuckPage, "🔥 Luck 500x: OFF", 2)
@@ -891,7 +880,7 @@ setupLuckToggle(Luck10000Btn, "Luck10000", 10000)
 setupLuckToggle(BroLuckBtn, "BroMaxLuck", 999999)
 
 --------------------------------------------------------------------------------
--- 5. PLAYER TAB CONTENT[cite: 1]
+-- 5. PLAYER TAB CONTENT
 --------------------------------------------------------------------------------
 local FlyBtn, FlyS, FlyG = CreatePageBtn(PlayerPage, "🦅 Fly Hack: OFF", 1)
 local InfJumpBtn, InfJS, InfJG = CreatePageBtn(PlayerPage, "🦘 Inf Jump Loop: OFF", 2)
@@ -1288,7 +1277,7 @@ end)
 --------------------------------------------------------------------------------
 -- 8. GLOBAL CHAT TAB CONTENT (CROSS-SERVER GUI CHAT)
 --------------------------------------------------------------------------------
-local PUB_KEY = "pub-c-9a4f4955-4654-47fd-b2d9-e9ef7495b6a7" -- Public demo channel key
+local PUB_KEY = "pub-c-9a4f4955-4654-47fd-b2d9-e9ef7495b6a7"
 local SUB_KEY = "sub-c-11111111-2222-3333-4444-555555555555"
 local CHANNEL = "greenapple_global_chat_v1"
 
